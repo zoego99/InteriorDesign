@@ -41,3 +41,48 @@ nav div:after{
 nav div:hover:after{
   transform: scaleX(1);
 }
+/* #slider =========================================== */
+#slider{
+  position: relative;
+  /* height: 347px;  暫訂 */
+}
+#slider img{
+  /* display: block; */
+  width: 100%; height: auto;
+  position: absolute; top: 0; left: 0;
+  opacity: 0;
+}
+#slider img:nth-of-type(1){
+  opacity: 1;
+}
+
+.sliderTab{
+  position: absolute; bottom: 0; left: 0; z-index: 1;
+  background: rgba(0, 0, 0, 0.377);
+  height: 50px; width: 100%;
+}
+.sliderTab a{
+  display: inline-block; width: 20%;
+  border-right: 1px solid #f57c00; box-sizing: border-box;
+  color: #EFAF00; text-align: center; line-height: 50px;
+
+  position: relative;
+  filter: drop-shadow(0 -1px 1px #000);
+}
+.sliderTab:last-child{
+  border-right: none;
+}
+.sliderTab .on{
+  background:#EFAF00; color:#fff; text-shadow: 1px 1px #000;
+}
+.sliderTab .on:before{
+  content: "";
+  border-bottom: 10px solid #EFAF00;
+  border-left:10px solid transparent; border-right:10px solid transparent;
+  position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
+}
+
+/* #slider =========================================== */
+section{
+  min-height: 100vh;
+}
