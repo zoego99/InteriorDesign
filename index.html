@@ -32,6 +32,7 @@
   <section>section4</section>
 
   <div class="gotop"><i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i></div>
+  <div class="ADmenu"></div>
 
 
   <script src="./js/jquery-3.2.1.js"></script>
@@ -111,6 +112,23 @@
     $('html,body').animate({scrollTop:$sectionTop},1000);
   });
 
+//S6:AD click事件
+  var IO = true;
+  var $AD = $('.ADmenu').click(function () {
+    if (IO) {
+      $AD.animate({right:0,width:310,},1000,function(){$(this).css('background','url(images/AD2.png)')});
+    } else {
+      $AD.animate({right:0,width:80}, 1000,function(){$(this).css('background','url(images/AD1.png)')});
+    }
+    IO = !IO;
+  });
+
+//S6:AD scroll事件
+  $(window).scroll(function(){
+    $AD.stop().animate({
+      top: $(this).scrollTop() + $AD.height(),
+    }, 800);
+  });
   </script>
 </body>
 </html>
