@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Interior Design</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <link rel="stylesheet" href="./css/index.css"/>
 </head>
 <body>
@@ -29,6 +30,9 @@
   <section>section2</section>
   <section>section3</section>
   <section>section4</section>
+
+  <div class="gotop"><i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i></div>
+
 
   <script src="./js/jquery-3.2.1.js"></script>
   <script>
@@ -92,7 +96,20 @@
 		$sliderA.eq($clickIndex).click();
 		$timer = window.setTimeout(sliderTimeFn,_speed);
 	}
+
+//S4:.gotop 捲動至頂
+	$('.gotop').click(function(){
+//		$('html,body').scrollTop(0);
+		$('html,body').animate({scrollTop:0},1000);
+	});
     
+//s5: nav click 捲動至各頁
+  $('nav div').click(function(){
+    var $navIndex = $(this).index();
+  //		alert($navIndex);
+    var $sectionTop = $('section').eq($navIndex).offset().top;
+    $('html,body').animate({scrollTop:$sectionTop},1000);
+  });
 
   </script>
 </body>
