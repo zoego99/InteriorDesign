@@ -54,7 +54,7 @@
     }
   
   //S3:slider click事件 加 hover 事件
-    $('.sliderTab a')
+    var $sliderA = $('.sliderTab a')
       .click(function(){
         $(this).addClass('on').siblings().removeClass('on');
         $('#slider>img').eq($(this).index()).animate({opacity:1},1000)
@@ -74,6 +74,24 @@
       }
     )
     ;
+
+  //#slider 定時輪播
+	var _speed = 5000;
+	var $timer=window.setTimeout(sliderTimeFn,_speed);
+
+	//#slider滑鼠移入時，停止輪播
+	$('#slider').hover(
+		function(){ window.clearTimeout($timer);}
+		,function(){ $timer = window.setTimeout(sliderTimeFn,_speed);}
+	);
+
+	//#slider 輪播fn
+	function sliderTimeFn(){
+		var $clickIndex = $('.sliderTab a.on').index();
+		$clickIndex = ($clickIndex+1) % $sliderA.length;
+		$sliderA.eq($clickIndex).click();
+		$timer = window.setTimeout(sliderTimeFn,_speed);
+	}
     
 
   </script>
