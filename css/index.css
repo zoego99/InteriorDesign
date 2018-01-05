@@ -82,6 +82,16 @@ nav div:hover:after{
   position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
 }
 
+.sliderTab a.hover{
+  position: relative;
+}
+/* .hovering 前面一定要加 #slider 讓優先權提高 */
+#slider .hoverimg{
+  width:200px; height: 60px; border-radius: 10px;
+  box-shadow: 1px 1px 3px #000; border: 1px solid #fff;
+  position: absolute; top: -75px; left: 50%; transform: translateX(-50%);
+}
+
 /* #slider =========================================== */
 section{
   min-height: 100vh;

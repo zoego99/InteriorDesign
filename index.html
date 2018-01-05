@@ -53,13 +53,28 @@
       $('#slider').css('height',$sliderH);
     }
   
-  //S3:slider click事件
+  //S3:slider click事件 加 hover 事件
     $('.sliderTab a')
       .click(function(){
         $(this).addClass('on').siblings().removeClass('on');
         $('#slider>img').eq($(this).index()).animate({opacity:1},1000)
                         .siblings('img').animate({opacity:0},500);
-      });
+      })
+      .hover(
+      function(){  // 滑入
+        $(this).addClass('hover');
+        var $hIndex = $(this).index();
+        var $hImgSrc = $('#slider>img').eq($hIndex).attr('src');
+        // console.log($hIndex,$hImgSrc);
+        $(this).prepend('<img src="'+ $hImgSrc +'" class="hoverimg" />');
+      }
+      ,function(){ // 滑出
+        $(this).removeClass('hover');
+        $(this).children().remove('img');
+      }
+    )
+    ;
+    
 
   </script>
 </body>
