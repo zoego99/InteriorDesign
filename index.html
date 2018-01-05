@@ -52,6 +52,15 @@
       var $sliderH = $('#slider>img').outerHeight();
       $('#slider').css('height',$sliderH);
     }
+  
+  //S3:slider click事件
+    $('.sliderTab a')
+      .click(function(){
+        $(this).addClass('on').siblings().removeClass('on');
+        $('#slider>img').eq($(this).index()).animate({opacity:1},1000)
+                        .siblings('img').animate({opacity:0},500);
+      });
+
   </script>
 </body>
 </html>
