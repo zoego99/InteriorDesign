@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Interior Design</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="./css/page.css">
   <link rel="stylesheet" href="./css/index.css"/>
 </head>
 <body>
@@ -129,6 +130,13 @@
       top: $(this).scrollTop() + $AD.height(),
     }, 800);
   });
+
+//S7:load事件 將各頁內容載入
+  $('section').each(function(i){
+      var $page = $('nav div').eq(i).data('file');
+      console.log($page);
+      $(this).load('./page/'+$page+'.html');
+    });
   </script>
 </body>
 </html>
