@@ -18,14 +18,44 @@
   <img src="images/slider03.jpg" alt="slider03" />
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut tincidunt erat, nec egestas erat. Vivamus volutpat est in
     lorem molestie sollicitudin. Pellentesque aliquet dignissim lectus, quis fringilla lectus blandit eu. Vivamus dignissim
-    eros eget bibendum laoreet. Phasellus vel cursus mi. Donec libero est, molestie nec lacus ut, faucibus sagittis sapien.
+    eros <a href="javascript:;" class="preview" data-prev="images/AD1.png" title="">室內設計Interior Design</a>eget bibendum laoreet. Phasellus vel cursus mi. Donec libero est, molestie nec lacus ut, faucibus sagittis sapien.
     Maecenas eu cursus urna. Aenean consectetur dui eu nunc viverra aliquet.</p>
   <p>Curabitur non semper enim. Nunc ligula mi, scelerisque vel tortor vitae, placerat dictum risus. Cras urna arcu, hendrerit
     ornare venenatis et, porta at enim. Suspendisse ac est ultrices nibh imperdiet lobortis. Cras luctus lorem ac est lacinia,
-    sit amet dapibus nibh placerat. Fusce interdum ultricies purus. Cras malesuada laoreet dolor sed vulputate. Pellentesque
+    sit<a href="javascript:;" class="preview" data-prev="images/AD1.png" title="Title Notes1">室內設計Interior Design1</a> amet dapibus nibh placerat. Fusce interdum ultricies purus. Cras malesuada laoreet dolor sed vulputate. Pellentesque
     habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pulvinar orci felis, vitae hendrerit
     dui placerat at.</p>
   <p>Mauris vulputate volutpat turpis id sodales. Donec tempus ligula et risus molestie ultrices. Cras luctus ultrices orci
     eget molestie. Integer vel nulla a lacus pharetra hendrerit. Fusce quis ligula varius, vehicula libero eget, bibendum
     sem. Fusce blandit varius lorem ac porttitor. Aliquam et diam metus. Aliquam erat volutpat.</p>
 </div>
+
+<script>
+  //S11: 在文中，加入隨身註解
+
+  var $thisTitle ;
+  $("a.preview").hover(
+      function(e){	
+          $thisTitle = $(this).attr('title');
+  //       console.log($thisTitle);
+          $(this).attr('title','') ;
+          var c = ($thisTitle != "") ? '<span>' + $thisTitle +'</span>': "";
+          $("body").append('<p id="preview">'+ c +'<br><img src="'+ $(this).data('prev') +'"/></p>');
+  
+    //確認視窗大小為避免物件超出範圍，顯示捲軸                           /*新增*/
+          var $targetW = $(window).width();
+          var $prevW = $("#preview").outerWidth(true);
+          var $prevLeft = e.pageX + 10;
+    //      console.log($targetW+'/'+$prevLeft+'/'+$prevW);
+          if($prevW+$prevLeft>=$targetW ){
+              $("#preview").css({top:e.pageY +10,right:0}).fadeIn();
+          }else{
+              $("#preview").css({top:e.pageY +10,left:e.pageX + 10}).fadeIn();
+          }
+  
+      }
+    ,function(){
+          $("#preview").remove();
+          $(this).attr('title',$thisTitle);
+      });
+</script>

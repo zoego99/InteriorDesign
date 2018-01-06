@@ -46,12 +46,15 @@
 
   //S2:取得#slider 高度
     $(window).on('load',function(){
-      sliderFn();
+      setTimeout(function(){
+        $('#slider').fadeIn(1000);
+        sliderFn();
+      },1000);
     }); 
 
     // resize
     $(window).resize(function(){
-      sliderFn();
+        sliderFn();
     });
 
     function sliderFn(){
